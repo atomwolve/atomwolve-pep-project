@@ -15,12 +15,12 @@ public class MessageService {
     }
 
     public Message addMessage(Message message){
-        if(message.message_text.length() > 255 || message.message_text == "") return null;
+        if(message.message_text.length() > 255 || message.message_text.isBlank()) return null;
         return messageDAO.insertMessage(message);
     }
 
     public Message updateMessage(int message_id, Message message){
-        if(message.message_text.length() > 255) return null;
+        if(message.message_text.length() > 255 || message.message_text.isBlank()) return null;
         if(messageDAO.getMessageByID(message_id) == null) return null;
 
         messageDAO.updateMessageByID(message_id, message.message_text);

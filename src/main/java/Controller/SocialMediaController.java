@@ -72,7 +72,7 @@ public class SocialMediaController {
         ObjectMapper mapper = new ObjectMapper();
         var deletedMessage = messageService.deleteMessageByID(Integer.parseInt(ctx.pathParam("message_id")));
         if(deletedMessage == null){
-            ctx.status(400);
+            ctx.status(200);
         }else{
             ctx.json(mapper.writeValueAsString(deletedMessage));
             ctx.status(200);
@@ -97,7 +97,7 @@ public class SocialMediaController {
     }
 
     private void getAllMessagesByUserHandler(Context ctx){
-        ctx.json(messageService.getAllMessagesByUser(Integer.parseInt(ctx.pathParam("posted_by"))));
+        ctx.json(messageService.getAllMessagesByUser(Integer.parseInt(ctx.pathParam("account_id"))));
     }
 
     private void getMessageByIDHandler(Context ctx){

@@ -14,12 +14,11 @@ public class AccountDAO
             PreparedStatement accountCheckStatement = connection.prepareStatement(checkForAccount);
             accountCheckStatement.setString(1, account.username);
             ResultSet rs = accountCheckStatement.executeQuery();
-
             if(rs.next()) return null;
 
             String sql = "INSERT INTO account (username, password) VALUES(?, ?)";
 
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             preparedStatement.setString(1, account.username);
             preparedStatement.setString(2, account.password);
