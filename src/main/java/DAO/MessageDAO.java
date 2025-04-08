@@ -123,6 +123,7 @@ public class MessageDAO
             preparedStatement.setInt(1, message_id);
 
             ResultSet rs = preparedStatement.executeQuery();
+
             while(rs.next())
             {
                 Message message = new Message(
@@ -130,6 +131,7 @@ public class MessageDAO
                     rs.getInt("posted_by"),
                     rs.getString("message_text"),
                     rs.getLong("time_posted_epoch"));
+                System.out.println(message);
                 return message;
             }
         }catch(SQLException e){

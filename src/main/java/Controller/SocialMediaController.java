@@ -100,8 +100,15 @@ public class SocialMediaController {
         ctx.json(messageService.getAllMessagesByUser(Integer.parseInt(ctx.pathParam("account_id"))));
     }
 
-    private void getMessageByIDHandler(Context ctx){
-        ctx.json(messageService.getMessageByID(Integer.parseInt(ctx.pathParam("message_id"))));
+    private void getMessageByIDHandler(Context ctx) throws JsonProcessingException
+    {
+        ObjectMapper mapper = new ObjectMapper();
+        Message foundMessage = messageService.getMessageByID(Integer.parseInt(ctx.pathParam("message_id")));
+        if(foundMessage == null){
+            ctx.status(200);
+        }else{
+            ctx.json(mapper.writeValueAsString(foundMessage));
+        }
     }
 
     private void postMessageHandler(Context ctx) throws JsonProcessingException {
