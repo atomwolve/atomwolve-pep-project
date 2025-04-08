@@ -5,6 +5,9 @@ import Model.Account;
 
 public class AccountDAO 
 {
+    /**
+    * @return the inserted account
+    */
     public Account insertAccount(Account account)
     {
         Connection connection = ConnectionUtil.getConnection();
@@ -36,7 +39,11 @@ public class AccountDAO
         return null;
     }
 
-    public Account getAccount(Account account){
+    /**
+    * @return the logged-in account
+    */
+    public Account getAccount(Account account)
+    {
         Connection connection = ConnectionUtil.getConnection();
         try 
         {

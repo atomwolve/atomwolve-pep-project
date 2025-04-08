@@ -4,10 +4,12 @@ import Util.ConnectionUtil;
 import java.util.List;
 import java.util.ArrayList;
 import java.sql.*;
+
 public class MessageDAO 
-{
-    //Process creation of new message
-    
+{    
+    /**
+    * @return the inserted message
+    */
     public Message insertMessage(Message message)
     {
         Connection connection = ConnectionUtil.getConnection();
@@ -40,7 +42,9 @@ public class MessageDAO
         return null;
     }
 
-    //Delete message by ID
+    /**
+    * @return the deleted message
+    */
     public Message deleteMessageByID(int message_id)
     {
         Connection connection = ConnectionUtil.getConnection();
@@ -61,7 +65,9 @@ public class MessageDAO
         return null;
     }
 
-    //Update message by ID
+    /**
+    * @return the updated message
+    */
     public Message updateMessageByID(int message_id, String message_text)
     {
         Connection connection = ConnectionUtil.getConnection();
@@ -82,11 +88,11 @@ public class MessageDAO
         return null;
     }
 
-//Retrieve all messages
     /**
-     * @return all messages.
-     */
-    public List<Message> getAllMessages(){
+    * @return all messages.
+    */
+    public List<Message> getAllMessages()
+    {
         Connection connection = ConnectionUtil.getConnection();
         List<Message> messages = new ArrayList<>();
         try {
@@ -109,10 +115,9 @@ public class MessageDAO
         return messages;
     }
 
-    //Retrieve message by ID
     /**
-     * @return message by message_id
-     */
+    * @return message by message_id
+    */
     public Message getMessageByID(int message_id)
     {
         Connection connection = ConnectionUtil.getConnection();
@@ -140,7 +145,9 @@ public class MessageDAO
         return null;
     }
 
-    //Retrieve all messages by user
+    /**
+    * @return list of messages by account id
+    */
     public List<Message> getAllMessagesByAccount(int account_id)
     {
         Connection connection = ConnectionUtil.getConnection();

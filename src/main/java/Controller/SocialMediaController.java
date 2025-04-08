@@ -13,8 +13,8 @@ import Model.*;
  * found in readme.md as well as the test cases. You should
  * refer to prior mini-project labs and lecture materials for guidance on how a controller may be built.
  */
-public class SocialMediaController {
-
+public class SocialMediaController 
+{
     AccountService accountService;
     MessageService messageService;
     
@@ -40,6 +40,7 @@ public class SocialMediaController {
         app.get("/accounts/{account_id}/messages", this::getAllMessagesByUserHandler);
         return app;
     }
+
     private void postAccountHandler(Context ctx) throws JsonProcessingException
     {
         ObjectMapper mapper = new ObjectMapper();
@@ -50,9 +51,9 @@ public class SocialMediaController {
             ctx.status(400);
         }else{
             ctx.json(mapper.writeValueAsString(addedAccount));
-            ctx.status(200);
         }
     }
+
     private void postLoginHandler(Context ctx) throws JsonProcessingException
     {
         ObjectMapper mapper = new ObjectMapper();
@@ -63,7 +64,6 @@ public class SocialMediaController {
             ctx.status(401);
         }else{
             ctx.json(mapper.writeValueAsString(loggedIn));
-            ctx.status(200);
         }
     }
 
@@ -75,7 +75,6 @@ public class SocialMediaController {
             ctx.status(200);
         }else{
             ctx.json(mapper.writeValueAsString(deletedMessage));
-            ctx.status(200);
         }
     }
 
@@ -119,7 +118,6 @@ public class SocialMediaController {
             ctx.status(400);
         }else{
             ctx.json(mapper.writeValueAsString(addedMessage));
-            ctx.status(200);
         }
     }
 }
